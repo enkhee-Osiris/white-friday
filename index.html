@@ -3,15 +3,75 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Title</title>
-    <link href="https://fonts.googleapis.com/css?family=Cormorant+Garamond:300" rel="stylesheet"> 
+    <title>Дараагийн архи согтууруулах ундаагүй баасан гариг.</title>
+    <link href="https://fonts.googleapis.com/css?family=Cormorant+Garamond:300" rel="stylesheet">
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        font-family: 'PT serif', serif;
+      }
+      #full {
+        min-height: 100vh;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+        justify-content: center;
+      }
+      .container {
+        -webkit-box-flex: 1;
+        -ms-flex-positive: 1;
+        flex-grow: 1;
+        -ms-flex-negative: 1;
+        flex-shrink: 1;
+        text-align: center;
+      }
+      .container h1 {
+        color: white;
+        font-size: 5rem;
+        font-weight: normal;
+      }
+      .container p {
+        color: white;
+        font-size: 1.5rem;
+      }
+    </style>
   </head>
   <body>
-  <section>
+  <section id="full">
     <div class="container">
       <h1 id="date">
       </h1>
+      <p>
+          Дараагийн <del>архи, согтууруулах ундаагүй</del> баасан гариг.
+      </p>
     </div>
   </section>
   </body>
+  <script>
+    var now = new Date();
+    var year = now.getMonth()/12, month = now.getMonth();
+    var blackDay;
+
+    while(true) {
+      month = month != 0 && month % 11 == 0 ? -1 : month;
+      month += 1;
+      year += 1/12;
+      var dateobj = new Date(now.getFullYear() + Math.floor(year), month, 1);
+      if (dateobj.getDay() == 5) {
+        blackDay = dateobj;
+        break;
+      }
+    }
+
+    document.getElementById("full").style.backgroundColor = "#" + blackDay.getFullYear().toString(16) + blackDay.getMonth().toString(16) + "bc";
+    document.getElementById("date").innerHTML = blackDay.toLocaleDateString().replace(/\//g, '-');
+  </script>
 </html>
