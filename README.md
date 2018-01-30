@@ -1,3 +1,4 @@
+ [![enkhee-Osiris](https://img.shields.io/badge/creator-enkhee--osiris-blue.svg)](https://github.com/enkhee-Osiris) [![Website](https://img.shields.io/website-up-down-green-red/http/shields.io.svg)](https://enkhee-osiris.github.io/white-friday/)
 # White Friday
 Хамгийн ойр "архи согтууруулах ундаа худалдаалахгүй баасан гараг".
 
