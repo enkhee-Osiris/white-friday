@@ -7,4 +7,4 @@
 
 ## Ашиглах
 
-[Энд дарна уу!](https://enkhee-osiris.github.io/white_friday/)
+[Энд дарна уу!](https://enkhee-osiris.github.io/white-friday/)
