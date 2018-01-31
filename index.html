@@ -88,7 +88,7 @@
 
         document.getElementById("full").style.backgroundColor = "#" + blackDay.getFullYear().toString(16) + blackDay.getMonth().toString(16) + "bc";
         document.getElementById("date").innerHTML = blackDay.toLocaleDateString().replace(/\//g, '-');
-    }
+    };
     document.body.addEventListener("click", function() {
         var dateStr = document.getElementById("date").innerText;
         var date = new Date(dateStr.replace(/-/g, '/'));
