@@ -12,6 +12,8 @@
       }
       body {
         font-family: 'PT serif', serif;
+        position: relative;
+        cursor: pointer;
       }
       #full {
         min-height: 100vh;
@@ -42,6 +44,16 @@
         color: white;
         font-size: 1.5rem;
       }
+      footer {
+        width: 100%;
+        position: absolute;
+        bottom: 20px;
+        color: #fff;
+      }
+      footer > p a {
+        color: #fa1414;
+        text-decoration: none;
+      }
     </style>
   </head>
   <body>
@@ -54,24 +66,36 @@
       </p>
     </div>
   </section>
+  <footer>
+    <p align="center">Crafted with <span style="color: #fa1414">♥</span> by <a href="http://github.com/enkhee-Osiris">Osiris</a>.</p>
+  </footer>
   </body>
   <script>
-    var now = new Date();
-    var year = now.getMonth()/12, month = now.getMonth();
-    var blackDay;
+    var findNextWhiteFriday = function(date) {
+        var year = date.getMonth()/12, month = date.getMonth();
+        var blackDay;
 
-    while(true) {
-      month = month != 0 && month % 11 == 0 ? -1 : month;
-      month += 1;
-      year += 1/12;
-      var dateobj = new Date(now.getFullYear() + Math.floor(year), month, 1);
-      if (dateobj.getDay() == 5) {
-        blackDay = dateobj;
-        break;
-      }
+        while(true) {
+        month = month != 0 && month % 11 == 0 ? -1 : month;
+        month += 1;
+        year += 1/12;
+        var dateobj = new Date(date.getFullYear() + Math.floor(year), month, 1);
+        if (dateobj.getDay() == 5) {
+            blackDay = dateobj;
+            break;
+        }
+        }
+
+        document.getElementById("full").style.backgroundColor = "#" + blackDay.getFullYear().toString(16) + blackDay.getMonth().toString(16) + "bc";
+        document.getElementById("date").innerHTML = blackDay.toLocaleDateString().replace(/\//g, '-');
     }
+    document.body.addEventListener("click", function() {
+        var dateStr = document.getElementById("date").innerText;
+        var date = new Date(dateStr.replace(/-/g, '/'));
+        findNextWhiteFriday(date);
+    });
 
-    document.getElementById("full").style.backgroundColor = "#" + blackDay.getFullYear().toString(16) + blackDay.getMonth().toString(16) + "bc";
-    document.getElementById("date").innerHTML = blackDay.toLocaleDateString().replace(/\//g, '-');
+    var now = new Date();
+    findNextWhiteFriday(now);
   </script>
 </html>
